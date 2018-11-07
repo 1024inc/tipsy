@@ -27,6 +27,8 @@ def create_account(request):
         email = req_data['email']
         password = req_data['password']
     except KeyError as e:
+        # One might argue that this response is a Presenter by itself
+        # But having the flexibility on mistyping "success" for example is a bit of a deal breaker for me. I'd rather have something which received the 3 params (success, message and status) and generated the messages
         return JsonResponse(
             {
                 'success': False,
