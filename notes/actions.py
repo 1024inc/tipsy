@@ -4,12 +4,13 @@ These are just wrapper methods around use cases, which allow us to consistently 
 behavior to actions performaned by users. The examples we show are decorators for logging
 transation data and checking permissions on a per-action basis.
 """
+# This is a pretty cool concept, never had heard of it.
 
 from topsy.action_decorators import permission, log
 from .use_cases import NoteUseCases
 
 
-class NoteActions():
+class NoteActions:
     def __init__(self, storage, logging):
         self.use_cases = NoteUseCases(storage)
         self.logging = logging

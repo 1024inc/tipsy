@@ -14,6 +14,7 @@ class DjangoStorage(Storage):
     """Adapter to use Django ORM as a storage backend."""
 
     def create_user(self, user, password):
+        # not injecting repo makes it less explicit when testing
         """Create user entity.
 
         Because Django provides password hashing functionality that we want to use, we perform this
@@ -22,6 +23,7 @@ class DjangoStorage(Storage):
         django_user = accounts_models.User.objects.from_entity(user)
         django_user.set_password(password)
         django_user.save()
+        # nizar: unnecessary coupling with the return from the repo;
         return django_user.to_entity()
 
     def save_board(self, board):
@@ -98,6 +100,7 @@ class DjangoStorage(Storage):
             raise self.DoesNotExist('User {} is not joined to board {}'.format(user_id, board_id))
 
         django_board_user.delete()
+        # nizar: interesting choice here, not sure why it returns this kind of object
         return django_board_user.asdict()
 
     def delete_board(self, id):

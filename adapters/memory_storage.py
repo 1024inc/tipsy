@@ -5,6 +5,7 @@ Should have same API as database adapter.
 
 from .storage import Storage
 
+# nizar: very cool exercise for leveraging the advantages of having a common interface for a repo
 class MemoryStorage(Storage):
     """Adapter to use system memory as a storage backend."""
 

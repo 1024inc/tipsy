@@ -4,6 +4,12 @@ Tests for use cases in the notes module.
 As much as possible we will test use cases with MemoryStorage to enforce independence between the
 use cases and the Django ORM.
 """
+# Ohhhhhh, this was surprising! So the whole Memory Storage was not to make a point on showing the advantages on switching the repo in a easy way. It was to actually be able to use it in these tests.
+
+# The author mixes many types of test when testing the Use Cases/Interactors. He definitely takes advantage of the in memory storage, but we end up having a weird mixture of tests: we have component tests(which is awesome and the perfect use case for the in memory storage), integration tests that don't actually integrate and system tests which don't actually test the system.
+
+# Martin Fowler has a very cool diagram that defines the frontiers between the different kind of tests very well: https://martinfowler.com/articles/microservice-testing/meta-image.png
+
 
 import unittest
 
